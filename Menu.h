@@ -19,13 +19,13 @@ public:
 		name = new_name;
 	}
 	
-	void addOption(string option);
+	void add_option(string option);
 
-	int doMenu() const;
-	int doMenuIndex() const;
-	char doMenuOption() const;
+	int display_menu() const;
+	int display_menu_index() const;
+	char display_menu_option() const;
 
-	bool hasOption() const
+	bool has_option() const
 	{
 		return options.size() > 0;
 	};
@@ -33,7 +33,7 @@ public:
 private:
 
 	void display() const;
-	void displayPrefixIndex() const;
+	void display_prefix_index() const;
 
 	string name;
 	vector<string> options;
