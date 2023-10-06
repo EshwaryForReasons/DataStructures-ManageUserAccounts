@@ -1,11 +1,31 @@
 
 #include "DateTime.h"
 
-DateTime::DateTime(int _day, int _month, int _year)
+#include <sstream>
+
+DateTime::DateTime(const string& string_date_time)
 {
-	day = _day;
-	month = _month;
-	year = _year;
+	string _month;
+	string _day;
+	string _year;
+	string _hour;
+	string _minute;
+	string _second;
+
+	stringstream ss(string_date_time);
+	getline(ss, _month, '/');
+	getline(ss, _day, '/');
+	getline(ss, _year, ' ');
+	getline(ss, _hour, ':');
+	getline(ss, _minute, ':');
+	getline(ss, _second, ' ');
+
+	set_hour(stoi(_hour));
+	set_minute(stoi(_minute));
+	set_second(stoi(_second));
+	day = stoi(_day);
+	month = stoi(_month);
+	year = stoi(_year);
 }
 
 void DateTime::set_day(int new_day)
@@ -36,4 +56,9 @@ int DateTime::get_month() const
 int DateTime::get_year() const
 {
 	return year;
+}
+
+const std::string DateTime::to_string() const
+{
+	return std::to_string(month) + "/" + std::to_string(day) + "/" + std::to_string(year) + " " + Time::to_string();
 }

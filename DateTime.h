@@ -3,12 +3,28 @@
 
 #include "Time.h"
 
+#include <string>
+
+using namespace std;
+
 class DateTime : public Time
 {
 public:
 
 	DateTime() = default;
-	DateTime(int _day, int _month, int _year);
+	DateTime(int _hour, int _minute, int _second, int _day, int _month, int _year)
+		: Time(_hour, _minute, _second)
+		, day(_day)
+		, month(_month)
+		, year(_year)
+	{}
+	DateTime(int _day, int _month, int _year)
+		: day(_day)
+		, month(_month)
+		, year(_year)
+	{}
+	//String format mm/dd/yyyy hh:mm:ss
+	DateTime(const string& string_date_time);
 	~DateTime() = default;
 
 	void set_day(int new_day);
@@ -18,6 +34,8 @@ public:
 	int get_day() const;
 	int get_month() const;
 	int get_year() const;
+
+	virtual const std::string to_string() const override;
 
 private:
 

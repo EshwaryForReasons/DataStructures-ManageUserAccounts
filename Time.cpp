@@ -1,13 +1,6 @@
 
 #include "Time.h"
 
-Time::Time(int _hour, int _minute, int _second)
-{
-	hour = _hour;
-	minute = _minute;
-	second = _second;
-}
-
 void Time::set_hour(int new_hour)
 {
 	hour = new_hour;
@@ -36,4 +29,9 @@ int Time::get_minute() const
 int Time::get_second() const
 {
 	return second;
+}
+
+const string Time::to_string() const
+{
+	return std::to_string(hour) + ":" + std::to_string(minute) + ":" + std::to_string(second);
 }

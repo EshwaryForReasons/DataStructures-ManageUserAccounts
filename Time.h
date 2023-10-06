@@ -1,12 +1,20 @@
 
 #pragma once
 
+#include <string>
+
+using namespace std;
+
 class Time
 {
 public:
 
 	Time() = default;
-	Time(int _hour, int _minute, int _second);
+	Time(int _hour, int _minute, int _second)
+		: hour(_hour)
+		, minute(_minute)
+		, second(_second)
+	{}
 	~Time() = default;
 
 	void set_hour(int new_hour);
@@ -16,6 +24,8 @@ public:
 	int get_hour() const;
 	int get_minute() const;
 	int get_second() const;
+
+	virtual const string to_string() const;
 
 private:
 
